@@ -1,0 +1,6 @@
+ses_inbound_endpoint: inbound-smtp.us-west-2.amazonaws.com
+rule_set_name: ses-inbound-trigger-demo
+s3_bucket: ses-inbound-trigger-demo
+rule_name: ses-inbound-trigger-demo
+username: bot
+s3_prefix: unprocessed

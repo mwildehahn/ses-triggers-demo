@@ -48,6 +48,39 @@
           }
         ]
       }
+    },
+    "S3Bucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "AccessControl": "Private",
+        "BucketName": "${s3_bucket_name}"
+      },
+      "DeletionPolicy": "Retain"
+    },
+    "SESAccessS3": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "Bucket": {"Ref": "S3Bucket"},
+        "PolicyDocument": {
+          "Statement": {
+            "Effect": "Allow",
+            "Principal": {
+              "Service": [
+                "ses.amazonaws.com"
+              ]
+            },
+            "Action": [
+              "s3:PutObject"
+            ],
+            "Resource": { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "S3Bucket" } , "/*" ]]},
+            "Condition": {
+              "StringEquals": {
+                "aws:Referer": { "Ref" : "AWS::AccountId" }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "Outputs": {
@@ -59,6 +92,10 @@
           "Arn"
         ]
       }
+    },
+    "S3Bucket": {
+      "Description": "S3 bucket where emails will be stored",
+      "Value": {"Ref": "S3Bucket"}
     }
   }
 }
