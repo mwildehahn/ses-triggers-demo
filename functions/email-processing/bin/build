@@ -1,0 +1,6 @@
+#! /usr/bin/bash
+
+source /venv/bin/activate
+pip install -r requirements.txt
+cp -Lr /venv/lib /vendored/lib
+cp -Lr /venv/lib64 /vendored/lib64

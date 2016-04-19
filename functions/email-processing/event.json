@@ -1,1 +1,128 @@
-{}
+{
+    "Records": [
+        {
+            "eventVersion": "1.0",
+            "eventSource": "aws:ses",
+            "ses": {
+                "mail": {
+                    "commonHeaders": {
+                        "from": [
+                            "Michael Hahn <mwhahn@gmail.com>"
+                        ],
+                        "to": [
+                            "\"bot@bot-demo.lunohq.com\" <bot@bot-demo.lunohq.com>"
+                        ],
+                        "returnPath": "mwhahn@gmail.com",
+                        "messageId": "<CAPU2RoSY9w1TWpo2R1X28r+aussF2AvMKkVNpCgdRJbDUrDspQ@mail.gmail.com>",
+                        "date": "Tue, 19 Apr 2016 03:06:19 +0000",
+                        "subject": "Test"
+                    },
+                    "source": "mwhahn@gmail.com",
+                    "timestamp": "2016-04-19T03:06:29.928Z",
+                    "destination": [
+                        "bot@bot-demo.lunohq.com"
+                    ],
+                    "headers": [
+                        {
+                            "name": "Return-Path",
+                            "value": "<mwhahn@gmail.com>"
+                        },
+                        {
+                            "name": "Received",
+                            "value": "from mail-io0-f177.google.com (mail-io0-f177.google.com [209.85.223.177]) by inbound-smtp.us-west-2.amazonaws.com with SMTP id 4pj9c9v0umoraonvba8180tp8micoruv17i7ei81 for bot@bot-demo.lunohq.com; Tue, 19 Apr 2016 03:06:29 +0000 (UTC)"
+                        },
+                        {
+                            "name": "X-SES-Spam-Verdict",
+                            "value": "PASS"
+                        },
+                        {
+                            "name": "X-SES-Virus-Verdict",
+                            "value": "PASS"
+                        },
+                        {
+                            "name": "Received-SPF",
+                            "value": "pass (spfCheck: domain of _spf.google.com designates 209.85.223.177 as permitted sender) client-ip=209.85.223.177; envelope-from=mwhahn@gmail.com; helo=mail-io0-f177.google.com;"
+                        },
+                        {
+                            "name": "Authentication-Results",
+                            "value": "amazonses.com; spf=pass (spfCheck: domain of _spf.google.com designates 209.85.223.177 as permitted sender) client-ip=209.85.223.177; envelope-from=mwhahn@gmail.com; helo=mail-io0-f177.google.com; dkim=pass header.i=@gmail.com;"
+                        },
+                        {
+                            "name": "Received",
+                            "value": "by mail-io0-f177.google.com with SMTP id o126so5948589iod.0 for <bot@bot-demo.lunohq.com>; Mon, 18 Apr 2016 20:06:29 -0700 (PDT)"
+                        },
+                        {
+                            "name": "DKIM-Signature",
+                            "value": "v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113; h=mime-version:from:date:message-id:subject:to; bh=OtizbDNjHqZGh9Rpl6q4eT6EzU6IdlHun8+egYULOoY=; b=IxDnJMkEzIyJsX+g6/7bYtBYuyqfoaXY5mXc+H/29HyfIm9pmFmSdcinFB9YERnEtB3XmuLXchgqXWYb10GsJgoO8ZX2QUlvWeGyVCQLP3FNSIY+bjnFfZyKEe6+Pp2WL6ETfD1BUzTxLzeKsbdFPQEjVZxB4BX5V00MnXJjzxF3OhqC11V/A16Iq4vuU5RxZ9SigQw252pbOaKLrOOE0AtxNeVKcvWGRp7wsGWMs0TMt6XDfsswXC9bCR+Nr59dlvbhOQ5heBo9Tu3Nnq4SxuBCAGYm3WbDdDNhxX90axRwbwUIqVuXWjSjSEpDadroVcr1N0qC1hq9mcsyzF2vbQ=="
+                        },
+                        {
+                            "name": "X-Google-DKIM-Signature",
+                            "value": "v=1; a=rsa-sha256; c=relaxed/relaxed; d=1e100.net; s=20130820; h=x-gm-message-state:mime-version:from:date:message-id:subject:to; bh=OtizbDNjHqZGh9Rpl6q4eT6EzU6IdlHun8+egYULOoY=; b=IVCn47PWaJmqmOnS+OETf8SaV3ja4qrsB7DaxcYQPUhQT9mkcBjiakUUfMIfyKtKxF u87WHFvGDogvuWmT4mlyt9huzQrjKASRhMM3NkEEu+bof3f000zKnp4UW5aOOef0M7cR SM8Ai/xcP6PzWB3QE6Lm9kOhipLHRVMpOKN1cWrFYZf2AeLtALpa0ZrVQozPIKzdM7SD v1NMGpxuMWayTp/AUtm5gVHzVMk2zsI6i3ep3LS6LgtZqRYAYDBlFnHYkfVG1z/c5FN5 snQiwDGG1xFso8eRVE8JwNsNAMlsA8vKUg5oW3gF0+oGfwjKchjZelQxMjIVE/s7biWL 4Ebw=="
+                        },
+                        {
+                            "name": "X-Gm-Message-State",
+                            "value": "AOPr4FXLU9fZgCXxy51bG3VXAjbPJnZPDLU8XAoAr+01Rj6sY2GRDVdrsYh786fBAcWO+PzLQe4tYCvQMJ1w4g=="
+                        },
+                        {
+                            "name": "X-Received",
+                            "value": "by 10.107.6.94 with SMTP id 91mr1081467iog.176.1461035189077; Mon, 18 Apr 2016 20:06:29 -0700 (PDT)"
+                        },
+                        {
+                            "name": "MIME-Version",
+                            "value": "1.0"
+                        },
+                        {
+                            "name": "From",
+                            "value": "Michael Hahn <mwhahn@gmail.com>"
+                        },
+                        {
+                            "name": "Date",
+                            "value": "Tue, 19 Apr 2016 03:06:19 +0000"
+                        },
+                        {
+                            "name": "Message-ID",
+                            "value": "<CAPU2RoSY9w1TWpo2R1X28r+aussF2AvMKkVNpCgdRJbDUrDspQ@mail.gmail.com>"
+                        },
+                        {
+                            "name": "Subject",
+                            "value": "Test"
+                        },
+                        {
+                            "name": "To",
+                            "value": "\"bot@bot-demo.lunohq.com\" <bot@bot-demo.lunohq.com>"
+                        },
+                        {
+                            "name": "Content-Type",
+                            "value": "multipart/alternative; boundary=001a113f8d42730d4e0530cdc355"
+                        }
+                    ],
+                    "headersTruncated": false,
+                    "messageId": "4pj9c9v0umoraonvba8180tp8micoruv17i7ei81"
+                },
+                "receipt": {
+                    "recipients": [
+                        "bot@bot-demo.lunohq.com"
+                    ],
+                    "timestamp": "2016-04-19T03:06:29.928Z",
+                    "spamVerdict": {
+                        "status": "PASS"
+                    },
+                    "dkimVerdict": {
+                        "status": "PASS"
+                    },
+                    "processingTimeMillis": 1222,
+                    "action": {
+                        "type": "Lambda",
+                        "functionArn": "arn:aws:lambda:us-west-2:487220619225:function:ses-triggers-demo-email-processing:dev"
+                    },
+                    "spfVerdict": {
+                        "status": "PASS"
+                    },
+                    "virusVerdict": {
+                        "status": "PASS"
+                    }
+                }
+            }
+        }
+    ]
+}

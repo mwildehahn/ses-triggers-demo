@@ -19,7 +19,10 @@
   "environment": {
     "SERVERLESS_PROJECT": "${project}",
     "SERVERLESS_STAGE": "${stage}",
-    "SERVERLESS_REGION": "${region}"
+    "SERVERLESS_REGION": "${region}",
+    "SES_S3_BUCKET": "${ses_s3_bucket}",
+    "SES_S3_PREFIX": "${ses_s3_prefix}",
+    "SES_SOURCE": "${ses_source}"
   },
   "vpc": {
     "securityGroupIds": [],

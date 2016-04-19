@@ -45,3 +45,4 @@ _meta
 
 # Ignore the overrides file
 overrides.yaml
+vendored

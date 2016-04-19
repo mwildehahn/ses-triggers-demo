@@ -39,6 +39,21 @@
                 "logs:PutLogEvents"
               ],
               "Resource": "arn:aws:logs:${region}:*:*"
+            },
+            {
+              "Effect": "Allow",
+              "Action": ["s3:GetObject"],
+              "Resource": "arn:aws:s3:::${ses_s3_bucket}/*"
+            },
+            {
+              "Effect": "Allow",
+              "Action": ["kms:Decrypt"],
+              "Resource": "${ses_kms_arn}"
+            },
+            {
+              "Effect": "Allow",
+              "Action": ["ses:SendEmail"],
+              "Resource": "*"
             }
           ]
         },
@@ -53,7 +68,7 @@
       "Type": "AWS::S3::Bucket",
       "Properties": {
         "AccessControl": "Private",
-        "BucketName": "${s3_bucket_name}"
+        "BucketName": "${ses_s3_bucket}"
       },
       "DeletionPolicy": "Retain"
     },
