@@ -19,15 +19,19 @@ def decrypt_object(s3, kms, bucket, key):
         decrypted payload
 
     """
+
+    # Fetch the encrypted payload
     encrypted = s3.get_object(Bucket=bucket, Key=key)
     metadata = encrypted['Metadata']
 
+    # Unpack the encryption metadata
     envelope_key = base64.b64decode(metadata['x-amz-key-v2'])
     envelope_iv = base64.b64decode(metadata['x-amz-iv'])
     encrypt_ctx = json.loads(metadata['x-amz-matdesc'])
     encryption_key = kms.decrypt(CiphertextBlob=envelope_key, EncryptionContext=encrypt_ctx)
     original_size = int(metadata['x-amz-unencrypted-content-length'])
 
+    # Decrypt the payload (AES/GCM/NoPadding)
     encrypted_payload = encrypted['Body'].read()
     auth_tag = encrypted_payload[original_size:]
     ciphertext = encrypted_payload[:original_size]

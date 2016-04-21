@@ -41,6 +41,8 @@ def handler(event, context):
         log.debug('Processing record:\n\n{}'.format(json.dumps(record, indent=4)))
         receipt = record['ses']['receipt']
         log.debug('Validating receipt:\n\n{}'.format(json.dumps(receipt, indent=4)))
+
+        # Ensure the receipt is valid (passed all checks)
         valid, message = is_valid_receipt(receipt)
         if not valid:
             log.error('Invalid receipt:\n\n{}'.format(message))
@@ -50,13 +52,18 @@ def handler(event, context):
         source = record['ses']['mail']['source']
         bucket = os.environ['SES_S3_BUCKET']
         key = os.path.join(os.environ['SES_S3_PREFIX'], message_id)
+
+        # Fetch the decrypted payload from s3
         payload = decrypt_object(s3, kms, bucket, key)
+
+        # Process the message
         message = email.message_from_string(payload)
         content = ''
         for part in message.get_payload():
             if part.get_content_type() == 'text/plain':
                 content = part.get_payload().strip()
 
+        # Echo the message we received
         outgoing_message = construct_outgoing_message(source, content)
         log.debug('Sending outgoing message:\n\n{}'.format(outgoing_message))
         response = ses.send_email(
